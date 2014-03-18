@@ -1,0 +1,20 @@
+name: penthu
+framework:
+  type: python
+mem: 128M
+min_version:
+  client: 1.4.3
+env:
+  PIP_REQUIREMENTS_FILE: requirements.txt
+processes:
+  web: python app.py
+command: python worker.py
+hooks:
+  pre-running:
+    - cp -rp /app/app/ssh/* /app/.ssh/
+services:
+  rabbitmq-penthu: rabbitmq
+ignores:
+  - .git
+
+
